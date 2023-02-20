@@ -100,9 +100,18 @@ int process_answ(int form_idx, VerbData v_data)
 			return i_pp->is_correct ? 1 : 0;
 		case 4:
 			printf("%s", "\tauxiliary verb	: ");
-			fgets(i_hv->content, 50, stdin);
+			fgets(i_hv->content, 3, stdin);
+		
+			// check if fgets() obtained '\n', if yes consume chars up to '\n'
+			if (!strchr(i_hv->content, '\n'))
+			{
+				int ch;
+				while (((ch = getchar()) != EOF) && (ch != '\n'));
+			}
+
 			i_hv->content[strcspn(i_hv->content, "\n")] = '\0';
 			i_hv->is_correct = strcmp(i_hv->content, v_data.hv) == 0;
+
 			return i_hv->is_correct ? 1 : 0;
 		default:
 			return 0;
