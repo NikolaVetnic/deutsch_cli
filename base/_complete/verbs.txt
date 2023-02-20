@@ -1,0 +1,19 @@
+# Serbian;infinitive;present 3rd person sg.;preterite 3rd person sg.;past participle
+# Gruppe A1
+peći;backen;bäckt;buk;gebacken
+voziti se, putovati;fahren;fährt;fuhr;gefahren
+kopati, zariti, zabosti;graben;gräbt;grub;gegraben
+(u)tovariti, pozvati na sud, napuniti;laden;lädt;lud;geladen
+raditi, praviti, postići, savladati, uspeti;schaffen;schafft;schuf;geschaffen
+udariti;schlagen;schlägt;schlug;geschlagen
+nositi;tragen;trägt;trug;getragen
+rasti;wachsen;wächst;wuchs;gewachsen
+prati (se), kupati (se);waschen;wäscht;wusch;gewaschen
+# Gruppe A2
+duvati, svirati (duvački instrument);blasen;bläst;blies;geblasen
+peći, pržiti;braten;brät;briet;gebraten
+pasti, padati;fallen;fällt;fiel;gefallen
+držati, zaustaviti se, stati;halten;hält;hielt;gehalten
+ostaviti, dozvoliti, dopustiti, pustiti, dati (da se nešto uradi);lassen;lässt;ließ;gelassen
+savetovati;raten;rät;riet;geraten
+spavati;schlaffen;schläft;schlief;geschlafen
