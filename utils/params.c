@@ -18,7 +18,10 @@ Options *process_params(int argc, char **argv)
 	if (argc == 1)
 		print_help();
 
-	for (int i = 1; i < argc; i++)
+	opt->q_total = strtol(argv[1], NULL, 10);
+	opt->q_curr  = 0;
+
+	for (int i = 2; i < argc; i++)
 	{
 		if (strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--verbs") == 0)
 			opt->include_verbs = true;

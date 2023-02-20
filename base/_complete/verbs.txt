@@ -1,19 +1,39 @@
 # Serbian;infinitive;present 3rd person sg.;preterite 3rd person sg.;past participle
-# Gruppe A1
-peći;backen;bäckt;buk;gebacken
-voziti se, putovati;fahren;fährt;fuhr;gefahren
-kopati, zariti, zabosti;graben;gräbt;grub;gegraben
-(u)tovariti, pozvati na sud, napuniti;laden;lädt;lud;geladen
-raditi, praviti, postići, savladati, uspeti;schaffen;schafft;schuf;geschaffen
-udariti;schlagen;schlägt;schlug;geschlagen
-nositi;tragen;trägt;trug;getragen
-rasti;wachsen;wächst;wuchs;gewachsen
-prati (se), kupati (se);waschen;wäscht;wusch;gewaschen
-# Gruppe A2
-duvati, svirati (duvački instrument);blasen;bläst;blies;geblasen
-peći, pržiti;braten;brät;briet;gebraten
-pasti, padati;fallen;fällt;fiel;gefallen
-držati, zaustaviti se, stati;halten;hält;hielt;gehalten
-ostaviti, dozvoliti, dopustiti, pustiti, dati (da se nešto uradi);lassen;lässt;ließ;gelassen
-savetovati;raten;rät;riet;geraten
-spavati;schlaffen;schläft;schlief;geschlafen
+# =-=-=-= Gruppe A1
+peći;backen;bäckt;buk;gebacken;h
+voziti se, putovati;fahren;fährt;fuhr;gefahren;i
+kopati, zariti, zabosti;graben;gräbt;grub;gegraben;h
+(u)tovariti, pozvati na sud, napuniti;laden;lädt;lud;geladen;h
+raditi, praviti, postići, savladati, uspeti;schaffen;schafft;schuf;geschaffen;h
+udariti;schlagen;schlägt;schlug;geschlagen;hi
+nositi;tragen;trägt;trug;getragen;h
+rasti;wachsen;wächst;wuchs;gewachsen;i
+prati (se), kupati (se);waschen;wäscht;wusch;gewaschen;hi
+# =-=-=-= Gruppe A2
+duvati, svirati (duvački instrument);blasen;bläst;blies;geblasen;h
+peći, pržiti;braten;brät;briet;gebraten;h
+pasti, padati;fallen;fällt;fiel;gefallen;i
+držati, zaustaviti se, stati;halten;hält;hielt;gehalten;h
+ostaviti, dozvoliti, dopustiti, pustiti, dati (da se nešto uradi);lassen;lässt;ließ;gelassen;h
+savetovati;raten;rät;riet;geraten;h
+spavati;schlaffen;schläft;schlief;geschlafen;h
+# =-=-=-= Gruppe A3
+primati, primiti, prihvatiti, dočekati, dočekivati, začeti;empfangen;empfängt;empfing;empfangen;h
+hvatati, uhvatiti, uloviti;fangen;fängt;fing;gefangen;h
+# =-=-=-= Gruppe B1
+dogoditi se, događati se, desiti se;geschehen;geschieht;geschah;geschehen;i
+čitati, pročitati;lesen;liest;las;gelesen;h
+videti, gledati;sehen;sieht;sah;gesehen;h
+# =-=-=-= Gruppe B2
+narediti, naređivati, zapovedati, komandovati;befehlen;befiehlt;befahl;befohlen;h
+preporučiti;empfehlen;empfiehlt;empfahl;empfohlen;h
+krasti;stehlen;stiehlt;stahl;gestohlen;h
+roditi;gebären;gebiert;gebar;geboren;h
+# =-=-=-= Gruppe B3
+jesti;essen;isst;aß;gegessen;h
+jesti, žderati, nagrizati;fressen;frisst;fraß;gefressen;h
+ozdraviti, prezdraviti, preboleti;genesen;genest;genas;genesen;i
+dati, predati, prirediti, postojati;geben;gibt;gab;gegeben;h
+meriti, izmeriti, imati;messen;misst;maß;gemessen;h
+stati, prići, stupiti, ući;treten;tritt;trat;getreten;hi
+zaboraviti;vergessen;vergisst;vergaß;vergessen;h

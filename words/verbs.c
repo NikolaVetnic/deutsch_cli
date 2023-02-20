@@ -58,26 +58,30 @@ VerbData *process_line(char *ptr)
 	{
 		switch (idx++)
 		{
-		case 0:
-			vd->serb = malloc(sizeof(char) * strlen(ptr));
-			strcpy(vd->serb, ptr);
-			break;
-		case 1:
-			vd->inf = malloc(sizeof(char) * strlen(ptr));
-			strcpy(vd->inf, ptr);
-			break;
-		case 2:
-			vd->pres = malloc(sizeof(char) * strlen(ptr));
-			strcpy(vd->pres, ptr);
-			break;
-		case 3:
-			vd->pret = malloc(sizeof(char) * strlen(ptr));
-			strcpy(vd->pret, ptr);
-			break;
-		case 4:
-			vd->pp = malloc(sizeof(char) * strlen(ptr));
-			strcpy(vd->pp, ptr);
-			break;
+			case 0:
+				vd->serb = malloc(sizeof(char) * strlen(ptr));
+				strcpy(vd->serb, ptr);
+				break;
+			case 1:
+				vd->inf = malloc(sizeof(char) * strlen(ptr));
+				strcpy(vd->inf, ptr);
+				break;
+			case 2:
+				vd->pres = malloc(sizeof(char) * strlen(ptr));
+				strcpy(vd->pres, ptr);
+				break;
+			case 3:
+				vd->pret = malloc(sizeof(char) * strlen(ptr));
+				strcpy(vd->pret, ptr);
+				break;
+			case 4:
+				vd->pp = malloc(sizeof(char) * strlen(ptr));
+				strcpy(vd->pp, ptr);
+				break;
+			case 5:
+				vd->hv = malloc(sizeof(char) * strlen(ptr));
+				strcpy(vd->hv, ptr);
+				break;
 		}
 
 		ptr = strtok(NULL, delim);

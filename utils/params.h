@@ -5,6 +5,9 @@
 
 typedef struct
 {
+	int q_total;
+	int q_curr;
+	
 	bool include_verbs;
 	bool include_nouns;
 	bool include_adjectives;

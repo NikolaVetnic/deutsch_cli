@@ -9,6 +9,7 @@ typedef struct
 	char *pres;
 	char *pret;
 	char *pp;
+	char *hv;
 } VerbData;
 
 typedef struct _VERBLISTNODE
