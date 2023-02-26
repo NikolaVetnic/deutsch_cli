@@ -1,3 +1,4 @@
+#include <locale.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,6 +31,8 @@ void run_verbs();
 
 int main(int argc, char **argv)
 {
+	setlocale(LC_CTYPE, ""); // for wide characters
+
 	printf("\n");
 
 	opt = process_params(argc, argv);
@@ -38,11 +41,11 @@ int main(int argc, char **argv)
 	run_verbs();
 
 	int used_total =
-		opt->q_n_curr + 
-		opt->q_v_curr + 
-		opt->q_a_curr + 
-		opt->q_c_curr + 
-		opt->q_e_curr ;
+		opt->q_n_curr +
+		opt->q_v_curr +
+		opt->q_a_curr +
+		opt->q_c_curr +
+		opt->q_e_curr;
 
 	printf("==> TOTAL SCORE : %.2f / %.2f \n\n", score, used_total * 1.0);
 
@@ -60,7 +63,6 @@ void run_verbs()
 		opt->q_total += opt->q_step;
 	}
 
-	
 	while (opt->include_verbs && v_excl_len < v_list->size && opt->q_v_curr < opt->q_step)
 	{
 		AnswerData *a_data = get_random_verb(v_list, v_excl, v_excl_len);

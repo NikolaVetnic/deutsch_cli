@@ -2,6 +2,8 @@
 #define GLOBAL_H_
 
 #include <stdbool.h>
+#include <string.h>
+#include <locale.h>
 
 typedef struct ANSWER_DATA_
 {
@@ -16,5 +18,7 @@ typedef struct _INPUT
 } Input;
 
 bool is_contained_in(int *arr, int arr_len, int num);
+size_t widestrlen(const char *str);
+size_t compensation(const char *str);
 
 #endif				// GLOBAL_H_
