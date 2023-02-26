@@ -6,4 +6,4 @@
 
 AnswerData	*get_random_verb(VerbList *v_list, int *excl, int excl_len);
 
-#endif				// V_TEST__H_ 
+#endif				// V_TEST_H_ 

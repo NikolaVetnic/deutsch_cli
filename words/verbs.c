@@ -4,12 +4,12 @@
 
 #include "verbs.h"
 
-char delim[] = ";";
+char v_delim[] = ";";
 
 VerbList *load_verbs_from_preset(char *filename);
-VerbData *process_line(char *ptr);
+VerbData *process_verb_line(char *ptr);
 void add_verb_list_node(VerbList *list, VerbListNode *list_node);
-VerbData get_data(VerbList *list, int idx);
+VerbData get_verb_data(VerbList *list, int idx);
 void print_verb_list(VerbList *list);
 void print_verb_list_node(VerbListNode *list_node);
 
@@ -30,10 +30,10 @@ VerbList *load_verbs_from_preset(char *filename)
 
 		buf[strcspn(buf, "\n")] = '\0';
 
-		char *ptr = strtok(buf, delim);
+		char *ptr = strtok(buf, v_delim);
 
 		VerbListNode *vln = malloc(sizeof(VerbListNode));
-		VerbData *vd = process_line(ptr);
+		VerbData *vd = process_verb_line(ptr);
 		vln->verb = *vd;
 
 		add_verb_list_node(v_list, vln);
@@ -48,7 +48,7 @@ VerbList *load_verbs_from_preset(char *filename)
 	return v_list;
 }
 
-VerbData *process_line(char *ptr)
+VerbData *process_verb_line(char *ptr)
 {
 	int idx = 0;
 
@@ -84,7 +84,7 @@ VerbData *process_line(char *ptr)
 				break;
 		}
 
-		ptr = strtok(NULL, delim);
+		ptr = strtok(NULL, v_delim);
 	}
 
 	return vd;
@@ -115,7 +115,7 @@ void add_verb_list_node(VerbList *list, VerbListNode *list_node)
 	}
 }
 
-VerbData get_data(VerbList *list, int idx)
+VerbData get_verb_data(VerbList *list, int idx)
 {
 	VerbListNode *curr = list->root;
 	int curr_idx = 0;

@@ -5,8 +5,13 @@
 
 typedef struct
 {
+	int q_step;
 	int q_total;
-	int q_curr;
+	int q_n_curr;
+	int q_v_curr;
+	int q_a_curr;
+	int q_c_curr;
+	int q_e_curr;
 	
 	bool include_verbs;
 	bool include_nouns;

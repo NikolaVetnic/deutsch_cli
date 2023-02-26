@@ -1,0 +1,4 @@
+# Serbian;singular;plural;article
+alternativa;die;Alternative;Alternativen
+nabrajanje;die;Aufzählung;Aufzählungen
+ograničenje;die;Einschränkung;Einschränkungen

@@ -7,12 +7,6 @@
 #include "global.h"
 #include "../words/verbs.h"
 
-typedef struct _INPUT
-{
-	char content[50];
-	bool is_correct;
-} Input;
-
 Input *i_inf;
 Input *i_pres;
 Input *i_pret;
@@ -20,9 +14,8 @@ Input *i_pp;
 Input *i_hv;
 
 AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len);
-bool is_contained_in(int *arr, int arr_len, int num);
-int process_answ(int form_idx, VerbData v_data);
-float print_answer_analysis(VerbData vd, int num_correct);
+int process_verb_answ(int form_idx, VerbData v_data);
+float print_verb_answer_analysis(VerbData vd, int num_correct);
 
 AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len)
 {
@@ -30,11 +23,15 @@ AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len)
 	srand((unsigned)time(&t));
 
 	int idx = rand() % v_list->size;
+		idx = idx == v_list->size ? 0 : idx;
 
 	while (is_contained_in(excl, excl_len, idx))
+	{
 		idx = rand() % v_list->size;
+		idx = idx == v_list->size ? 0 : idx;
+	}
 
-	VerbData v_data = get_data(v_list, idx);
+	VerbData v_data = get_verb_data(v_list, idx);
 
 	i_inf = malloc(sizeof(Input));
 	i_pres = malloc(sizeof(Input));
@@ -46,13 +43,13 @@ AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len)
 
 	int num_correct = 0;
 
-	num_correct += process_answ(0, v_data);
-	num_correct += process_answ(1, v_data);
-	num_correct += process_answ(2, v_data);
-	num_correct += process_answ(3, v_data);
-	num_correct += process_answ(4, v_data);
+	num_correct += process_verb_answ(0, v_data);
+	num_correct += process_verb_answ(1, v_data);
+	num_correct += process_verb_answ(2, v_data);
+	num_correct += process_verb_answ(3, v_data);
+	num_correct += process_verb_answ(4, v_data);
 
-	float res = print_answer_analysis(v_data, num_correct);
+	float res = print_verb_answer_analysis(v_data, num_correct);
 
 	AnswerData *a_data = malloc(sizeof(AnswerData));
 	a_data->idx = v_data.idx;
@@ -61,16 +58,7 @@ AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len)
 	return a_data;
 }
 
-bool is_contained_in(int *arr, int arr_len, int num)
-{
-	for (int i = 0; i < arr_len; i++)
-		if (arr[i] == num)
-			return true;
-
-	return false;
-}
-
-int process_answ(int form_idx, VerbData v_data)
+int process_verb_answ(int form_idx, VerbData v_data)
 {
 	switch (form_idx)
 	{
@@ -118,7 +106,7 @@ int process_answ(int form_idx, VerbData v_data)
 	}
 }
 
-float print_answer_analysis(VerbData vd, int num_correct)
+float print_verb_answer_analysis(VerbData vd, int num_correct)
 {
 	printf("\n");
 	printf("\t\x1b[1m\x1b[45m|   %-13s \t|   %-13s \t|   %-13s \t|   %-13s \t|   %-2s \t|\x1b[0m \n",

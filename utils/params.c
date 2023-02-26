@@ -18,8 +18,13 @@ Options *process_params(int argc, char **argv)
 	if (argc == 1)
 		print_help();
 
-	opt->q_total = strtol(argv[1], NULL, 10);
-	opt->q_curr  = 0;
+	opt->q_step	  = strtol(argv[1], NULL, 10);
+	opt->q_total  = 0;
+	opt->q_n_curr = 0;
+	opt->q_v_curr = 0;
+	opt->q_a_curr = 0;
+	opt->q_c_curr = 0;
+	opt->q_e_curr = 0;
 
 	for (int i = 2; i < argc; i++)
 	{
