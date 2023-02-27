@@ -41,7 +41,7 @@ AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len)
 	i_pp = malloc(sizeof(Input));
 	i_hv = malloc(sizeof(Input));
 
-	printf("==> %s \n", v_data.serb);
+	printf("\x1b[1m\x1b[44m==> %s \x1b[0m \n", v_data.serb);
 
 	int num_correct = 0;
 

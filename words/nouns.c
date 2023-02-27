@@ -3,9 +3,12 @@
 #include <string.h>
 
 #include "nouns.h"
+#include "../utils/utils.h"
+#include "../tests/global.h"
 #include "w_sym.h"
 
 char n_delim[] = ";";
+int N_MAX_LENGTH = 32;
 
 NounList *load_nouns_from_preset(char *filename);
 NounData *process_noun_line(char *ptr);
@@ -59,26 +62,27 @@ NounData *process_noun_line(char *ptr)
 	{
 		switch (idx++)
 		{
-			case 0:
-				nd->serb = malloc(sizeof(char) * strlen(ptr));
-				strcpy(nd->serb, ptr);
-				break;
-			case 1:
-				nd->art = malloc(sizeof(char) * strlen(ptr));
-				strcpy(nd->art, ptr);
-				break;
-			case 2:
-				nd->sg = malloc(sizeof(char) * strlen(ptr));
-				strcpy(nd->sg, ptr);
-				break;
-			case 3:
-				nd->pl = malloc(sizeof(char) * strlen(ptr));
-				strcpy(nd->pl, ptr);
-				break;
+		case 0:
+			nd->serb = malloc(sizeof(char) * strlen(ptr));
+			strcpy(nd->serb, ptr);
+			break;
+		case 1:
+			nd->art = malloc(sizeof(char) * strlen(ptr));
+			strcpy(nd->art, ptr);
+			break;
+		case 2:
+			nd->sg = malloc(sizeof(char) * strlen(ptr));
+			strcpy(nd->sg, ptr);
+			break;
+		case 3:
+			nd->pl = malloc(sizeof(char) * strlen(ptr));
+			strcpy(nd->pl, ptr);
+			trim_white_space(nd->pl);
+			break;
 		}
 
 		ptr = strtok(NULL, n_delim);
-	}	
+	}
 
 	return nd;
 }
@@ -134,5 +138,12 @@ void print_noun_list(NounList *list)
 
 void print_noun_list_node(NounListNode *list_node)
 {
-	printf("%s %s %s %s \n", list_node->noun.serb, list_node->noun.sg, list_node->noun.pl, list_node->noun.art);
+	printf("\x1b[1m\x1b[44m[N] %-*s |\x1b[0m \n", (int)compensation(list_node->noun.serb) + N_MAX_LENGTH * 2 + 22, list_node->noun.serb);
+
+	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-3s  |\x1b[0m \n",
+		   N_MAX_LENGTH + (int)compensation(list_node->noun.sg), list_node->noun.sg,
+		   N_MAX_LENGTH + (int)compensation(list_node->noun.pl), list_node->noun.pl,
+		   list_node->noun.art);
+
+	printf("\n");
 }

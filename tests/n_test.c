@@ -11,7 +11,7 @@ Input *i_sg;
 Input *i_pl;
 Input *i_art;
 
-int MAX_NOUN_LENGTH = 30;
+int MAX_NOUN_LENGTH = 32;
 
 AnswerData *get_random_noun(NounList *n_list, int *excl, int excl_len);
 int process_noun_answ(int form_idx, NounData n_data);
@@ -22,14 +22,7 @@ AnswerData *get_random_noun(NounList *n_list, int *excl, int excl_len)
 	time_t t;
 	srand((unsigned)time(&t));
 
-	int idx = rand() & n_list->size;
-	idx = idx == n_list->size ? 0 : idx;
-
-	while (is_contained_in(excl, excl_len, idx))
-	{
-		idx = rand() & n_list->size;
-		idx = idx == n_list->size ? 0 : idx;
-	}
+	int idx = rand() % n_list->size;
 
 	NounData n_data = get_noun_data(n_list, idx);
 
@@ -37,7 +30,7 @@ AnswerData *get_random_noun(NounList *n_list, int *excl, int excl_len)
 	i_pl = malloc(sizeof(Input));
 	i_art = malloc(sizeof(Input));
 
-	printf("==> %s \n", n_data.serb);
+	printf("\x1b[1m\x1b[44m==> %s \x1b[0m \n", n_data.serb);
 
 	int num_correct = 0;
 
@@ -84,11 +77,11 @@ int process_noun_answ(int form_idx, NounData n_data)
 float print_noun_answer_analysis(NounData nd, int num_correct)
 {
 	printf("\n");
-	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-3s |\x1b[0m \n",
+	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-3s  |\x1b[0m \n",
 		   MAX_NOUN_LENGTH + (int)compensation(nd.sg), nd.sg,
 		   MAX_NOUN_LENGTH + (int)compensation(nd.pl), nd.pl,
 		   nd.art);
-	printf("\t| %s %-*s | %s %-*s | %s %-3s | \n",
+	printf("\t| %s %-*s | %s %-*s | %s %-3s  | \n",
 		   i_sg->is_correct ? "\x1b[32;1m\uf00c\x1b[0m" : "\x1b[31;1m\ueab8\x1b[0m", MAX_NOUN_LENGTH + (int)compensation(i_sg->content), i_sg->content,
 		   i_pl->is_correct ? "\x1b[32;1m\uf00c\x1b[0m" : "\x1b[31;1m\ueab8\x1b[0m", MAX_NOUN_LENGTH + (int)compensation(i_pl->content), i_pl->content,
 		   i_art->is_correct ? "\x1b[32;1m\uf00c\x1b[0m" : "\x1b[31;1m\ueab8\x1b[0m", i_art->content);

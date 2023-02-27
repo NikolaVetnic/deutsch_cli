@@ -26,6 +26,7 @@ typedef struct
 
 VerbList    *load_verbs_from_preset(char *filename);
 VerbData    get_verb_data(VerbList *list, int idx);
+void 		print_verb_list_node(VerbListNode *list_node);
 void        print_verb_list(VerbList *list);
 
 #endif				// VERBS_H_

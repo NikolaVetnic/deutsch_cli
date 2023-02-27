@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../tests/global.h"
 #include "verbs.h"
 
 char v_delim[] = ";";
+int V_MAX_LENGTH = 14;
 
 VerbList *load_verbs_from_preset(char *filename);
 VerbData *process_verb_line(char *ptr);
@@ -58,30 +60,30 @@ VerbData *process_verb_line(char *ptr)
 	{
 		switch (idx++)
 		{
-			case 0:
-				vd->serb = malloc(sizeof(char) * strlen(ptr));
-				strcpy(vd->serb, ptr);
-				break;
-			case 1:
-				vd->inf = malloc(sizeof(char) * strlen(ptr));
-				strcpy(vd->inf, ptr);
-				break;
-			case 2:
-				vd->pres = malloc(sizeof(char) * strlen(ptr));
-				strcpy(vd->pres, ptr);
-				break;
-			case 3:
-				vd->pret = malloc(sizeof(char) * strlen(ptr));
-				strcpy(vd->pret, ptr);
-				break;
-			case 4:
-				vd->pp = malloc(sizeof(char) * strlen(ptr));
-				strcpy(vd->pp, ptr);
-				break;
-			case 5:
-				vd->hv = malloc(sizeof(char) * strlen(ptr));
-				strcpy(vd->hv, ptr);
-				break;
+		case 0:
+			vd->serb = malloc(sizeof(char) * strlen(ptr));
+			strcpy(vd->serb, ptr);
+			break;
+		case 1:
+			vd->inf = malloc(sizeof(char) * strlen(ptr));
+			strcpy(vd->inf, ptr);
+			break;
+		case 2:
+			vd->pres = malloc(sizeof(char) * strlen(ptr));
+			strcpy(vd->pres, ptr);
+			break;
+		case 3:
+			vd->pret = malloc(sizeof(char) * strlen(ptr));
+			strcpy(vd->pret, ptr);
+			break;
+		case 4:
+			vd->pp = malloc(sizeof(char) * strlen(ptr));
+			strcpy(vd->pp, ptr);
+			break;
+		case 5:
+			vd->hv = malloc(sizeof(char) * strlen(ptr));
+			strcpy(vd->hv, ptr);
+			break;
 		}
 
 		ptr = strtok(NULL, v_delim);
@@ -141,5 +143,14 @@ void print_verb_list(VerbList *list)
 
 void print_verb_list_node(VerbListNode *list_node)
 {
-	printf("%s %s %s %s %s \n", list_node->verb.serb, list_node->verb.inf, list_node->verb.pres, list_node->verb.pret, list_node->verb.pp);
+	printf("\x1b[1m\x1b[44m[V] %-*s |\x1b[0m \n", (int)compensation(list_node->verb.serb) + V_MAX_LENGTH * 4 + 30, list_node->verb.serb);
+
+	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-*s |   %-*s |   %-2s |\x1b[0m \n",
+		   V_MAX_LENGTH + (int)compensation(list_node->verb.inf), list_node->verb.inf,
+		   V_MAX_LENGTH + (int)compensation(list_node->verb.pres), list_node->verb.pres,
+		   V_MAX_LENGTH + (int)compensation(list_node->verb.pret), list_node->verb.pret,
+		   V_MAX_LENGTH + (int)compensation(list_node->verb.pp), list_node->verb.pp,
+		   list_node->verb.hv);
+
+	printf("\n");
 }

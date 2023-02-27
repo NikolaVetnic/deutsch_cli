@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <unistd.h>
 
 #include "./utils/params.h"
 #include "./words/nouns.h"
@@ -31,6 +30,9 @@ void run_verbs();
 
 int main(int argc, char **argv)
 {
+	time_t t;
+	srand((unsigned)time(&t));
+
 	setlocale(LC_CTYPE, ""); // for wide characters
 
 	printf("\n");
@@ -52,37 +54,16 @@ int main(int argc, char **argv)
 	exit(EXIT_SUCCESS);
 }
 
-void run_verbs()
-{
-	if (opt->include_verbs)
-	{
-		v_list = load_verbs_from_preset("./base/verbs.txt");
-		v_excl = malloc(sizeof(int) * total_questions);
-		v_excl_len = 0;
-
-		opt->q_total += opt->q_step;
-	}
-
-	while (opt->include_verbs && v_excl_len < v_list->size && opt->q_v_curr < opt->q_step)
-	{
-		AnswerData *a_data = get_random_verb(v_list, v_excl, v_excl_len);
-		v_excl[v_excl_len++] = a_data->idx;
-		score += a_data->pts;
-
-		opt->q_v_curr++;
-	}
-}
-
 void run_nouns()
 {
-	if (opt->include_nouns)
-	{
-		n_list = load_nouns_from_preset("./base/nouns.txt");
-		n_excl = malloc(sizeof(int) * total_questions);
-		n_excl_len = 0;
+	if (!opt->include_nouns)
+		return;
 
-		opt->q_total += opt->q_step;
-	}
+	n_list = load_nouns_from_preset("./base/nouns.txt");
+	n_excl = malloc(sizeof(int) * total_questions);
+	n_excl_len = 0;
+
+	opt->q_total += opt->q_step;
 
 	while (opt->include_nouns && n_excl_len < n_list->size && opt->q_n_curr < opt->q_step)
 	{
@@ -91,5 +72,26 @@ void run_nouns()
 		score += a_data->pts;
 
 		opt->q_n_curr++;
+	}
+}
+
+void run_verbs()
+{
+	if (!opt->include_verbs)
+		return;
+
+	v_list = load_verbs_from_preset("./base/verbs.txt");
+	v_excl = malloc(sizeof(int) * total_questions);
+	v_excl_len = 0;
+
+	opt->q_total += opt->q_step;
+
+	while (opt->include_verbs && v_excl_len < v_list->size && opt->q_v_curr < opt->q_step)
+	{
+		AnswerData *a_data = get_random_verb(v_list, v_excl, v_excl_len);
+		v_excl[v_excl_len++] = a_data->idx;
+		score += a_data->pts;
+
+		opt->q_v_curr++;
 	}
 }

@@ -1,4 +1,67 @@
-# Serbian;singular;plural;article
-alternativa;die;Alternative;Alternativen
-nabrajanje;die;Aufzählung;Aufzählungen
-ograničenje;die;Einschränkung;Einschränkungen
+# Serbian;article;singular;plural
+alternativa;die;Alternative;Alternativen 
+nabrajanje;die;Aufzählung;Aufzählungen 
+ograničenje;die;Einschränkung;Einschränkungen 
+advokat;der;Rechtsanwalt;Rechtsanwälte 
+advokatica;die;Rechtsanwaltin;Rechtsanwaltinen 
+nauka;die;Wissenschaft;- 
+reklama;der;Werbespot;Werbespots 
+kancelarija, poslovni prostor;der;Geschäftsraum;Geschäftsräume 
+lokal, radnja;das;Ladenlokal;Ladenlokale 
+(poslovni) lokal, radnja;das;Geschäftslokal;Geschäftslokale 
+vrata;die;Tür;Türen 
+hodnik, Gang zwischen den zimmerfluchten großer Gebäude;der;Flur;Flure 
+trkački automobil;das;Rennauto;Rennautos 
+stepenice;die;Treppe;Treppen 
+natpis, oznaka;die;Aufschrit;Aufschriten 
+dinstani paradajz;die;Schmortomate;Schmortomaten 
+stambena zajednica, komuna;die;Wohngemeinschaft;Wohngemeinschaften 
+poslovni izlet;der;Betriebsausflug;Betriebsausflüge 
+količina, broj;die;Anzahl;Anzahlen 
+broj;die;Zahl;Zahlen 
+šansa za zaposlenje;die;Einstellungschance;Einstellungschancen 
+profil;das;Profil;Profile 
+zahtev;die;Anforderung;Anforderungen 
+oblast, opseg;der;Bereich;Bereiche 
+savezna oblast, teritorija;das;Bundesgebiet;Bundesgebiete 
+klinika;die;Klinik;Kliniken 
+koncept;das;Konzept;Konzepte 
+sajam;die;Messe;Messen 
+smena, sloj, stratum;die;Schicht;Schichten 
+rad u smenama;der;Schichtdienst;Schichtdienste 
+spontanost;die;Spontaneität;Spontaneitäten 
+preduzeće, kompanija, poduhvat, korporacija, firma;das;Unternehmen;Unternehmen 
+vizit karta;die;Visitenkarte;Visitenkarten 
+predavanje, čitanje;die;Vorlesung;Vorlesungen 
+deponovanje, podnošenje, polica, repozitorijum, skladište;die;Ablage;Ablagen 
+direktor/menadžer sektora;der;Bereichsleiter;Bereichsleiter 
+konferencija;die;Konferenz;Konferenzen 
+pozicija;die;Position;Positionen 
+vođa projekta;der;Projektleiter;Projektleiter 
+dokument, podloga, osnova, supstrat;die;Unterlage;Unterlagen 
+radna snaga, zaposleni;die;Arbeitskraft;Arbeitskräfte 
+udarac (fig.), uticaj, posledica, implikacija, efekat;die;Auswirkung;Auswirkungen 
+udarac (fig.), vrlina, posledica, efekat, sila;die;Wirkung;Wirkungen 
+motivacija;die;Motivation;Motivationen 
+reportaža;die;Reportage;Reportagen 
+terapeut;der;Therapeut;Therapeuten 
+izmena, promena, diversifikacija, modifikacija;die;Veränderung;Veränderungen 
+kolaps, ometanje, propast (firme), raspad;der;Zusammenbruch;Zusammenbrüche 
+ličnost;die;Persönlichkeit;Persönlichkeiten 
+povećanje, skok, augmentacija, poboljšanje;die;Steigerung;Steigerungen 
+obrt, prihod, prodaje, količina;der;Umsatz;Umsätze 
+reklamna akcija;die;Werbeaktion;Werbeaktionen 
+savest;das;Gewissen;Gewissen 
+otvorenost, iskrenost;die;Offenheit;- 
+znak (eng. cue, prompt), ključna reč, krilatica;das;Stichwort;Stichwörter 
+poslovni sud, radni sud;das;Arbeitsgericht;Arbeitsgerichte 
+stručnjak za pravo rada;der;Arbeitsrechtler;Arbeitsrechtler 
+uzbuđenje, užurbanost, frka (fig.);die;Aufregung;Aufregungen 
+senzacija, komešanje;das;Aufsehen;- 
+sastanak, konferencija, razgovor, diskusija;die;Besprechung;Besprechungen 
+krađa, lopovluk;der;Diebstahl;Diebstähle 
+saglasnost;das;Einverständnis;Einverständnisse 
+specijalizovani advokat, advokat za bankrot;der;Fachanwalt;Fachanwälte 
+odobrenje, dozvola, pristanak;die;Genehmigung;Genehmigungen 
+konvencija;die;Konvention;Konventionen 
+briga, stvar (eng. matter), zahtev, želja, objektiv (cilj);das;Anliegen;Anliegen 
