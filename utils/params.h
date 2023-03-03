@@ -18,6 +18,8 @@ typedef struct
 	bool include_adjectives;
 	bool include_connectors;
 	bool include_expressions;
+
+	int tgt_lvl;
 } Options;
 
 Options *process_params(int argc, char **argv);

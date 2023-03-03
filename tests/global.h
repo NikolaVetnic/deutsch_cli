@@ -9,6 +9,7 @@ typedef struct ANSWER_DATA_
 {
 	int idx;
 	float pts;
+    bool should_break;
 } AnswerData;
 
 typedef struct _INPUT

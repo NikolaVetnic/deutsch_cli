@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 
 void run_nouns()
 {
-    n_list = load_nouns_from_preset("./base/nouns.txt");
+    n_list = load_nouns_from_preset("./base/nouns.csv");
 
     int tgt = rand() % n_list->size;
     int idx = -1;
@@ -47,7 +47,7 @@ void run_nouns()
 
 void run_verbs()
 {
-    v_list = load_verbs_from_preset("./base/verbs.txt");
+    v_list = load_verbs_from_preset("./base/verbs.csv");
 
     int tgt = rand() % v_list->size;
     int idx = -1;

@@ -15,25 +15,35 @@ Input *i_hv;
 
 int MAX_VERB_LENGTH = 14;
 
-AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len);
+AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len, int tgt_lvl);
 int process_verb_answ(int form_idx, VerbData v_data);
 float print_verb_answer_analysis(VerbData vd, int num_correct);
 
-AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len)
+AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len, int tgt_lvl)
 {
 	time_t t;
 	srand((unsigned)time(&t));
 
-	int idx = rand() % v_list->size;
-	idx = idx == v_list->size ? 0 : idx;
+	int cnt = 0;
 
-	while (is_contained_in(excl, excl_len, idx))
+	int idx = 0;
+	VerbData v_data = get_verb_data(v_list, idx);
+
+	while (is_contained_in(excl, excl_len, idx) || tgt_lvl != -1 && v_data.lvl != tgt_lvl)
 	{
 		idx = rand() % v_list->size;
-		idx = idx == v_list->size ? 0 : idx;
-	}
+		v_data = get_verb_data(v_list, idx);
 
-	VerbData v_data = get_verb_data(v_list, idx);
+		if (cnt++ == 100)
+		{
+			AnswerData *a_data = malloc(sizeof(AnswerData));
+			a_data->idx = -1;
+			a_data->pts = .0;
+			a_data->should_break = true;
+
+			return a_data;
+		}
+	}
 
 	i_inf = malloc(sizeof(Input));
 	i_pres = malloc(sizeof(Input));
@@ -56,6 +66,7 @@ AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len)
 	AnswerData *a_data = malloc(sizeof(AnswerData));
 	a_data->idx = v_data.idx;
 	a_data->pts = res;
+	a_data->should_break = false;
 
 	return a_data;
 }

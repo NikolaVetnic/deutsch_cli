@@ -59,9 +59,11 @@ void run_nouns()
 	if (!opt->include_nouns)
 		return;
 
-	n_list = load_nouns_from_preset("./base/nouns.txt");
+	n_list = load_nouns_from_preset("./base/nouns.csv");
 	n_excl = malloc(sizeof(int) * total_questions);
 	n_excl_len = 0;
+
+	print_noun_list(n_list);
 
 	opt->q_total += opt->q_step;
 
@@ -80,15 +82,24 @@ void run_verbs()
 	if (!opt->include_verbs)
 		return;
 
-	v_list = load_verbs_from_preset("./base/verbs.txt");
+	v_list = load_verbs_from_preset("./base/verbs.csv");
 	v_excl = malloc(sizeof(int) * total_questions);
 	v_excl_len = 0;
+
+	// print_verb_list(v_list);
 
 	opt->q_total += opt->q_step;
 
 	while (opt->include_verbs && v_excl_len < v_list->size && opt->q_v_curr < opt->q_step)
 	{
-		AnswerData *a_data = get_random_verb(v_list, v_excl, v_excl_len);
+		AnswerData *a_data = get_random_verb(v_list, v_excl, v_excl_len, opt->tgt_lvl);
+
+		if (a_data->should_break)
+		{
+			printf("\x1b[1m\x1b[44m| ERROR |\x1b[0m no (more) verbs that match the target level were found in the database \n\n");
+			break;
+		}
+
 		v_excl[v_excl_len++] = a_data->idx;
 		score += a_data->pts;
 

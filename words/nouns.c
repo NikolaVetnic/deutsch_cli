@@ -8,7 +8,7 @@
 #include "w_sym.h"
 
 char n_delim[] = ";";
-int N_MAX_LENGTH = 32;
+int N_MAX_LENGTH = 42;
 
 NounList *load_nouns_from_preset(char *filename);
 NounData *process_noun_line(char *ptr);
@@ -63,19 +63,19 @@ NounData *process_noun_line(char *ptr)
 		switch (idx++)
 		{
 		case 0:
-			nd->serb = malloc(sizeof(char) * strlen(ptr));
+			nd->serb = malloc(sizeof(char) * (strlen(ptr) + 1));
 			strcpy(nd->serb, ptr);
 			break;
 		case 1:
-			nd->art = malloc(sizeof(char) * strlen(ptr));
+			nd->art = malloc(sizeof(char) * (strlen(ptr) + 1));
 			strcpy(nd->art, ptr);
 			break;
 		case 2:
-			nd->sg = malloc(sizeof(char) * strlen(ptr));
+			nd->sg = malloc(sizeof(char) * (strlen(ptr) + 1));
 			strcpy(nd->sg, ptr);
 			break;
 		case 3:
-			nd->pl = malloc(sizeof(char) * strlen(ptr));
+			nd->pl = malloc(sizeof(char) * (strlen(ptr) + 1));
 			strcpy(nd->pl, ptr);
 			trim_white_space(nd->pl);
 			break;
@@ -138,11 +138,11 @@ void print_noun_list(NounList *list)
 
 void print_noun_list_node(NounListNode *list_node)
 {
-	printf("\x1b[1m\x1b[44m[N] %-*s |\x1b[0m \n", (int)compensation(list_node->noun.serb) + N_MAX_LENGTH * 2 + 22, list_node->noun.serb);
+	printf("\x1b[1m\x1b[44m[N] %-*s |\x1b[0m \n", (int)compensation(list_node->noun.serb) + N_MAX_LENGTH * 2 + 27, list_node->noun.serb);
 
-	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-3s  |\x1b[0m \n",
-		   N_MAX_LENGTH + (int)compensation(list_node->noun.sg), list_node->noun.sg,
-		   N_MAX_LENGTH + (int)compensation(list_node->noun.pl), list_node->noun.pl,
+	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-4s  |\x1b[0m \n",
+		   N_MAX_LENGTH + (int)compensation(list_node->noun.sg) + 2, list_node->noun.sg,
+		   N_MAX_LENGTH + (int)compensation(list_node->noun.pl) + 2, list_node->noun.pl,
 		   list_node->noun.art);
 
 	printf("\n");

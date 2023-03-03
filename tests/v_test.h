@@ -4,6 +4,6 @@
 #include "global.h"
 #include "../words/verbs.h"
 
-AnswerData	*get_random_verb(VerbList *v_list, int *excl, int excl_len);
+AnswerData	*get_random_verb(VerbList *v_list, int *excl, int excl_len, int tgt_lvl);
 
 #endif				// V_TEST_H_ 

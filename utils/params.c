@@ -18,15 +18,35 @@ Options *process_params(int argc, char **argv)
 	if (argc == 1)
 		print_help();
 
-	opt->q_step	  = strtol(argv[1], NULL, 10);
-	opt->q_total  = 0;
+	opt->q_step = strtol(argv[1], NULL, 10);
+	opt->q_total = 0;
 	opt->q_n_curr = 0;
 	opt->q_v_curr = 0;
 	opt->q_a_curr = 0;
 	opt->q_c_curr = 0;
 	opt->q_e_curr = 0;
 
-	for (int i = 2; i < argc; i++)
+	opt->tgt_lvl = -1;
+
+	if (strcmp(argv[2], "-a1") == 0)
+		opt->tgt_lvl = 0;
+	else if (strcmp(argv[2], "-a2") == 0)
+		opt->tgt_lvl = 1;
+	else if (strcmp(argv[2], "-b1") == 0)
+		opt->tgt_lvl = 2;
+	else if (strcmp(argv[2], "-b2") == 0)
+		opt->tgt_lvl = 3;
+	else if (strcmp(argv[2], "-c1") == 0)
+		opt->tgt_lvl = 4;
+	else if (strcmp(argv[2], "-c2") == 0)
+		opt->tgt_lvl = 5;
+
+	int start_idx = 2;
+
+	if (opt->tgt_lvl != -1)
+		start_idx = 3;
+
+	for (int i = start_idx; i < argc; i++)
 	{
 		if (strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--verbs") == 0)
 			opt->include_verbs = true;

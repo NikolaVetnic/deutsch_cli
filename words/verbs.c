@@ -6,7 +6,7 @@
 #include "verbs.h"
 
 char v_delim[] = ";";
-int V_MAX_LENGTH = 14;
+int V_MAX_LENGTH = 20;
 
 VerbList *load_verbs_from_preset(char *filename);
 VerbData *process_verb_line(char *ptr);
@@ -61,28 +61,42 @@ VerbData *process_verb_line(char *ptr)
 		switch (idx++)
 		{
 		case 0:
-			vd->serb = malloc(sizeof(char) * strlen(ptr));
+			vd->serb = malloc(sizeof(char) * strlen(ptr) + 1);
 			strcpy(vd->serb, ptr);
 			break;
 		case 1:
-			vd->inf = malloc(sizeof(char) * strlen(ptr));
+			vd->inf = malloc(sizeof(char) * strlen(ptr) + 1);
 			strcpy(vd->inf, ptr);
 			break;
 		case 2:
-			vd->pres = malloc(sizeof(char) * strlen(ptr));
+			vd->pres = malloc(sizeof(char) * strlen(ptr) + 1);
 			strcpy(vd->pres, ptr);
 			break;
 		case 3:
-			vd->pret = malloc(sizeof(char) * strlen(ptr));
+			vd->pret = malloc(sizeof(char) * strlen(ptr) + 1);
 			strcpy(vd->pret, ptr);
 			break;
 		case 4:
-			vd->pp = malloc(sizeof(char) * strlen(ptr));
+			vd->pp = malloc(sizeof(char) * strlen(ptr) + 1);
 			strcpy(vd->pp, ptr);
 			break;
 		case 5:
-			vd->hv = malloc(sizeof(char) * strlen(ptr));
+			vd->hv = malloc(sizeof(char) * strlen(ptr) + 1);
 			strcpy(vd->hv, ptr);
+			break;
+		case 6:
+			if (strcmp(ptr, "c2") == 0)
+				vd->lvl = 5;
+			else if (strcmp(ptr, "c1") == 0)
+				vd->lvl = 4;
+			else if (strcmp(ptr, "b2") == 0)
+				vd->lvl = 3;
+			else if (strcmp(ptr, "b1") == 0)
+				vd->lvl = 2;
+			else if (strcmp(ptr, "a2") == 0)
+				vd->lvl = 1;
+			else if (strcmp(ptr, "a1") == 0)
+				vd->lvl = 0;
 			break;
 		}
 
@@ -143,9 +157,9 @@ void print_verb_list(VerbList *list)
 
 void print_verb_list_node(VerbListNode *list_node)
 {
-	printf("\x1b[1m\x1b[44m[V] %-*s |\x1b[0m \n", (int)compensation(list_node->verb.serb) + V_MAX_LENGTH * 4 + 30, list_node->verb.serb);
+	printf("\x1b[1m\x1b[44m[V] %-*s |\x1b[0m \n", (int)compensation(list_node->verb.serb) + V_MAX_LENGTH * 4 + 31, list_node->verb.serb);
 
-	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-*s |   %-*s |   %-2s |\x1b[0m \n",
+	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-*s |   %-*s |   %-3s |\x1b[0m \n",
 		   V_MAX_LENGTH + (int)compensation(list_node->verb.inf), list_node->verb.inf,
 		   V_MAX_LENGTH + (int)compensation(list_node->verb.pres), list_node->verb.pres,
 		   V_MAX_LENGTH + (int)compensation(list_node->verb.pret), list_node->verb.pret,
