@@ -6,14 +6,14 @@
 #include <time.h>
 
 #include "./utils/params.h"
-#include "./words/nouns.h"
-#include "./words/verbs.h"
+#include "./words/de/nouns.h"
+#include "./words/de/verbs.h"
 
 NounList *n_list;
 VerbList *v_list;
 
-void run_nouns();
-void run_verbs();
+void run_nouns_de();
+void run_verbs_de();
 
 int main(int argc, char **argv)
 {
@@ -24,15 +24,15 @@ int main(int argc, char **argv)
 
     printf("\n");
 
-    run_nouns();
-    run_verbs();
+    run_nouns_de();
+    run_verbs_de();
 
     exit(EXIT_SUCCESS);
 }
 
-void run_nouns()
+void run_nouns_de()
 {
-    n_list = load_nouns_from_preset("./base/nouns.csv");
+    n_list = load_nouns_from_preset("./base/de_nouns.csv");
 
     int tgt = rand() % n_list->size;
     int idx = -1;
@@ -45,9 +45,9 @@ void run_nouns()
     print_noun_list_node(curr);
 }
 
-void run_verbs()
+void run_verbs_de()
 {
-    v_list = load_verbs_from_preset("./base/verbs.csv");
+    v_list = load_verbs_from_preset("./base/de_verbs.csv");
 
     int tgt = rand() % v_list->size;
     int idx = -1;

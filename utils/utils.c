@@ -5,6 +5,7 @@
 #include <ctype.h>
 
 char *trim_white_space(char *str);
+void print_err(char *str);
 
 char *trim_white_space(char *str)
 {
@@ -58,4 +59,9 @@ char *trim_white_space(char *str)
     }
 
     return str;
+}
+
+void print_err(char *str)
+{
+    printf("\x1b[1m\x1b[44m| ERROR |\x1b[0m %s \n\n", str);
 }

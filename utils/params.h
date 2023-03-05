@@ -5,10 +5,13 @@
 
 typedef struct
 {
+	int lang; // 0 german, 1 hungarian
+
 	int q_step;
 	int q_total;
-	int q_n_curr;
+	
 	int q_v_curr;
+	int q_n_curr;
 	int q_a_curr;
 	int q_c_curr;
 	int q_e_curr;

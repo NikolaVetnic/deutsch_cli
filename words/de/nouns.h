@@ -10,6 +10,7 @@ typedef struct
 	char *sg;
 	char *pl;
 	char *art;
+	int lvl;
 } NounData;
 
 typedef struct _NOUNLISTNODE

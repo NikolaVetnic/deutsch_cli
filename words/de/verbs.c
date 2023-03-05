@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../tests/global.h"
+#include "../../tests/global.h"
 #include "verbs.h"
 
 char v_delim[] = ";";
-int V_MAX_LENGTH = 20;
+// int V_MAX_LENGTH = 14;
+int V_MAX_LENGTH = 30;
 
 VerbList *load_verbs_from_preset(char *filename);
 VerbData *process_verb_line(char *ptr);

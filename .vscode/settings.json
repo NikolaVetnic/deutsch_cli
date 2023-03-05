@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "verbs.h": "c",
+        "global.h": "c",
+        "nouns_hu.h": "c",
+        "verbs_hu.h": "c"
+    }
+}

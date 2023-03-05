@@ -3,12 +3,13 @@
 #include <string.h>
 
 #include "nouns.h"
-#include "../utils/utils.h"
-#include "../tests/global.h"
-#include "w_sym.h"
+#include "../../utils/utils.h"
+#include "../../tests/global.h"
+#include "../w_sym.h"
 
 char n_delim[] = ";";
-int N_MAX_LENGTH = 42;
+// int N_MAX_LENGTH = 42;
+int N_MAX_LENGTH = 62;
 
 NounList *load_nouns_from_preset(char *filename);
 NounData *process_noun_line(char *ptr);

@@ -4,8 +4,8 @@
 #include <string.h>
 #include <time.h>
 
-#include "global.h"
-#include "../words/verbs.h"
+#include "../global.h"
+#include "../../words/de/verbs.h"
 
 Input *i_inf;
 Input *i_pres;
@@ -13,20 +13,21 @@ Input *i_pret;
 Input *i_pp;
 Input *i_hv;
 
-int MAX_VERB_LENGTH = 14;
+// int MAX_VERB_LENGTH = 14;
+int MAX_VERB_LENGTH = 30;
 
-AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len, int tgt_lvl);
-int process_verb_answ(int form_idx, VerbData v_data);
-float print_verb_answer_analysis(VerbData vd, int num_correct);
+AnswerData *get_random_verb_de(VerbList *v_list, int *excl, int excl_len, int tgt_lvl);
+int process_verb_answ_de(int form_idx, VerbData v_data);
+float print_verb_answer_analysis_de(VerbData vd, int num_correct);
 
-AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len, int tgt_lvl)
+AnswerData *get_random_verb_de(VerbList *v_list, int *excl, int excl_len, int tgt_lvl)
 {
 	time_t t;
 	srand((unsigned)time(&t));
 
 	int cnt = 0;
 
-	int idx = 0;
+	int idx = rand() % v_list->size;
 	VerbData v_data = get_verb_data(v_list, idx);
 
 	while (is_contained_in(excl, excl_len, idx) || tgt_lvl != -1 && v_data.lvl != tgt_lvl)
@@ -55,13 +56,13 @@ AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len, int tgt_l
 
 	int num_correct = 0;
 
-	num_correct += process_verb_answ(0, v_data);
-	num_correct += process_verb_answ(1, v_data);
-	num_correct += process_verb_answ(2, v_data);
-	num_correct += process_verb_answ(3, v_data);
-	num_correct += process_verb_answ(4, v_data);
+	num_correct += process_verb_answ_de(0, v_data);
+	num_correct += process_verb_answ_de(1, v_data);
+	num_correct += process_verb_answ_de(2, v_data);
+	num_correct += process_verb_answ_de(3, v_data);
+	num_correct += process_verb_answ_de(4, v_data);
 
-	float res = print_verb_answer_analysis(v_data, num_correct);
+	float res = print_verb_answer_analysis_de(v_data, num_correct);
 
 	AnswerData *a_data = malloc(sizeof(AnswerData));
 	a_data->idx = v_data.idx;
@@ -71,7 +72,7 @@ AnswerData *get_random_verb(VerbList *v_list, int *excl, int excl_len, int tgt_l
 	return a_data;
 }
 
-int process_verb_answ(int form_idx, VerbData v_data)
+int process_verb_answ_de(int form_idx, VerbData v_data)
 {
 	switch (form_idx)
 	{
@@ -120,7 +121,7 @@ int process_verb_answ(int form_idx, VerbData v_data)
 	}
 }
 
-float print_verb_answer_analysis(VerbData vd, int num_correct)
+float print_verb_answer_analysis_de(VerbData vd, int num_correct)
 {
 	printf("\n");
 	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-*s |   %-*s |   %-2s |\x1b[0m \n",

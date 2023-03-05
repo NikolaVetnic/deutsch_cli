@@ -4,20 +4,21 @@
 #include <string.h>
 #include <time.h>
 
-#include "global.h"
-#include "../words/nouns.h"
+#include "../global.h"
+#include "../../words/de/nouns.h"
 
 Input *i_sg;
 Input *i_pl;
 Input *i_art;
 
-int MAX_NOUN_LENGTH = 32;
+// int MAX_NOUN_LENGTH = 32;
+int MAX_NOUN_LENGTH = 64;
 
-AnswerData *get_random_noun(NounList *n_list, int *excl, int excl_len);
-int process_noun_answ(int form_idx, NounData n_data);
-float print_noun_answer_analysis(NounData nd, int num_correct);
+AnswerData *get_random_noun_de(NounList *n_list, int *excl, int excl_len);
+int process_noun_answ_de(int form_idx, NounData n_data);
+float print_noun_answer_analysis_de(NounData nd, int num_correct);
 
-AnswerData *get_random_noun(NounList *n_list, int *excl, int excl_len)
+AnswerData *get_random_noun_de(NounList *n_list, int *excl, int excl_len)
 {
 	time_t t;
 	srand((unsigned)time(&t));
@@ -34,11 +35,11 @@ AnswerData *get_random_noun(NounList *n_list, int *excl, int excl_len)
 
 	int num_correct = 0;
 
-	num_correct += process_noun_answ(0, n_data);
-	num_correct += process_noun_answ(1, n_data);
-	num_correct += process_noun_answ(2, n_data);
+	num_correct += process_noun_answ_de(0, n_data);
+	num_correct += process_noun_answ_de(1, n_data);
+	num_correct += process_noun_answ_de(2, n_data);
 
-	float res = print_noun_answer_analysis(n_data, num_correct);
+	float res = print_noun_answer_analysis_de(n_data, num_correct);
 
 	AnswerData *a_data = malloc(sizeof(AnswerData));
 	a_data->idx = n_data.idx;
@@ -47,7 +48,7 @@ AnswerData *get_random_noun(NounList *n_list, int *excl, int excl_len)
 	return a_data;
 }
 
-int process_noun_answ(int form_idx, NounData n_data)
+int process_noun_answ_de(int form_idx, NounData n_data)
 {
 	switch (form_idx)
 	{
@@ -74,7 +75,7 @@ int process_noun_answ(int form_idx, NounData n_data)
 	}
 }
 
-float print_noun_answer_analysis(NounData nd, int num_correct)
+float print_noun_answer_analysis_de(NounData nd, int num_correct)
 {
 	printf("\n");
 	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-3s  |\x1b[0m \n",
