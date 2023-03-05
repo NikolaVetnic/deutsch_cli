@@ -2,7 +2,7 @@
 
 ![./img/demo.gif](./img/demo.gif)
 
-:de: German and :hu: Hungarian Test CLI Tool.
+German and Hungarian Test CLI Tool.
 
 ## Setting the Active Base File
 
