@@ -1,9 +1,12 @@
+#include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <wchar.h>
 
 #include "../../tests/global.h"
 #include "verbs.h"
+#include "../../utils/utils.h"
 
 char v_delim[] = ";";
 // int V_MAX_LENGTH = 14;
@@ -98,6 +101,8 @@ VerbData *process_verb_line(char *ptr)
 				vd->lvl = 1;
 			else if (strcmp(ptr, "a1") == 0)
 				vd->lvl = 0;
+			else
+				vd->lvl = -1;
 			break;
 		}
 
@@ -158,7 +163,9 @@ void print_verb_list(VerbList *list)
 
 void print_verb_list_node(VerbListNode *list_node)
 {
-	printf("\x1b[1m\x1b[44m[V] %-*s |\x1b[0m \n", (int)compensation(list_node->verb.serb) + V_MAX_LENGTH * 4 + 31, list_node->verb.serb);
+	int width = display_width(list_node->verb.serb);
+	int field_width = V_MAX_LENGTH * 4 + 27 - width + (int)strlen(list_node->verb.serb);
+	printf("\x1b[1m\x1b[44m[V] %-*s |\x1b[0m \n", field_width, list_node->verb.serb);
 
 	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-*s |   %-*s |   %-3s |\x1b[0m \n",
 		   V_MAX_LENGTH + (int)compensation(list_node->verb.inf), list_node->verb.inf,

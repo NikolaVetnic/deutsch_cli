@@ -139,11 +139,13 @@ void print_noun_list(NounList *list)
 
 void print_noun_list_node(NounListNode *list_node)
 {
-	printf("\x1b[1m\x1b[44m[N] %-*s |\x1b[0m \n", (int)compensation(list_node->noun.serb) + N_MAX_LENGTH * 2 + 27, list_node->noun.serb);
+	int width = display_width(list_node->noun.serb);
+	int field_width = N_MAX_LENGTH * 2 + 23 - width + (int)strlen(list_node->noun.serb);
+	printf("\x1b[1m\x1b[44m[N] %-*s |\x1b[0m \n", field_width, list_node->noun.serb);
 
-	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |   %-4s  |\x1b[0m \n",
-		   N_MAX_LENGTH + (int)compensation(list_node->noun.sg) + 2, list_node->noun.sg,
-		   N_MAX_LENGTH + (int)compensation(list_node->noun.pl) + 2, list_node->noun.pl,
+	printf("\t\x1b[1m\x1b[45m|   %-*s |   %-*s |  %-4s |\x1b[0m \n",
+		   N_MAX_LENGTH + (int)compensation(list_node->noun.sg) + 3, list_node->noun.sg,
+		   N_MAX_LENGTH + (int)compensation(list_node->noun.pl) + 3, list_node->noun.pl,
 		   list_node->noun.art);
 
 	printf("\n");

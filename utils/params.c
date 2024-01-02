@@ -111,10 +111,10 @@ void print_params(Options *opt)
 	printf("\x1b[1m\x1b[45m| %-27s %2s |\x1b[0m \n", "language", opt->lang == 0 ? "de" : "hu");
 	printf("\x1b[1m\x1b[45m| %-25s %4d |\x1b[0m \n", "words per group", opt->q_step);
 	printf("\x1b[1m\x1b[45m| %-25s %4s |\x1b[0m \n", "target level", opt->tgt_lvl == -1 ? "all" : opt->tgt_lvl == 0 ? "a1"
-																							  : opt->tgt_lvl == 1	? "a2"
-																							  : opt->tgt_lvl == 2	? "b1"
-																							  : opt->tgt_lvl == 3	? "b2"
-																							  : opt->tgt_lvl == 4	? "c1"
+																							  	: opt->tgt_lvl == 1	? "a2"
+																							  	: opt->tgt_lvl == 2	? "b1"
+																							  	: opt->tgt_lvl == 3	? "b2"
+																							  	: opt->tgt_lvl == 4	? "c1"
 																													: "c2");
 
 	printf("\x1b[1m\x1b[45m| %-20s ", "included");

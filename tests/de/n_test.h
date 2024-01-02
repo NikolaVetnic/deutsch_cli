@@ -4,6 +4,6 @@
 #include "../global.h"
 #include "../../words/de/nouns.h"
 
-AnswerData	*get_random_noun_de(NounList *n_list, int *excl, int excl_len);
+AnswerData	*get_random_noun_de(NounList *n_list, int *excl, int excl_len, int tgt_lvl);
 
 #endif				// N_TEST_H

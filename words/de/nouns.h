@@ -27,6 +27,7 @@ typedef struct
 
 NounList	*load_nouns_from_preset(char *filename);
 NounData	get_noun_data(NounList *list, int idx);
+void 		add_noun_list_node(NounList *list, NounListNode *list_node);
 void 		print_noun_list_node(NounListNode *list_node);
 void		print_noun_list(NounList *list);
 
