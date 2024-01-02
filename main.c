@@ -100,7 +100,7 @@ void run_nouns_de()
 
 	if (n_list->size < opt->q_step)
 	{
-		printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m requested %d nouns, but the target database only contains %d ... \n", opt->q_step, n_list->size);
+		printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m requested %d nouns, but the target database only contains %d ... \n\n", opt->q_step, n_list->size);
 		return;
 	}
 
@@ -111,6 +111,13 @@ void run_nouns_de()
 	while (opt->include_nouns && n_excl_len < n_list->size && opt->q_n_curr < opt->q_step)
 	{
 		AnswerData *a_data = get_random_noun_de(n_list, n_excl, n_excl_len, opt->tgt_lvl);
+
+		if (a_data->should_break)
+		{
+			printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m no (more) nouns that match the target level were found in the database ... \n\n");
+			break;
+		}
+
 		n_excl[n_excl_len++] = a_data->idx;
 		score += a_data->pts;
 
@@ -129,7 +136,7 @@ void run_verbs_de()
 
 	if (v_list->size < opt->q_step)
 	{
-		printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m requested %d verbs, but the target database only contains %d ... \n", opt->q_step, v_list->size);
+		printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m requested %d verbs, but the target database only contains %d ... \n\n", opt->q_step, v_list->size);
 		return;
 	}
 
@@ -143,7 +150,7 @@ void run_verbs_de()
 
 		if (a_data->should_break)
 		{
-			printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m no (more) verbs that match the target level were found in the database \n\n");
+			printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m no (more) verbs that match the target level were found in the database ... \n\n");
 			break;
 		}
 
@@ -165,7 +172,7 @@ void run_ads_de()
 
 	if (a_list->size < opt->q_step)
 	{
-		printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m requested %d adjectives, but the target database only contains %d ... \n", opt->q_step, a_list->size);
+		printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m requested %d adjectives, but the target database only contains %d ... \n\n", opt->q_step, a_list->size);
 		return;
 	}
 
@@ -176,6 +183,13 @@ void run_ads_de()
 	while (opt->include_adjectives && a_excl_len < a_list->size && opt->q_a_curr < opt->q_step)
 	{
 		AnswerData *a_data = get_random_ad_de(a_list, a_excl, a_excl_len, opt->tgt_lvl);
+
+		if (a_data->should_break)
+		{
+			printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m no (more) adjectives or adverbs that match the target level were found in the database ... \n\n");
+			break;
+		}
+
 		a_excl[a_excl_len++] = a_data->idx;
 		score += a_data->pts;
 
@@ -194,7 +208,7 @@ void run_connectors_de()
 
 	if (c_list->size < opt->q_step)
 	{
-		printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m requested %d connectors, but the target database only contains %d ... \n", opt->q_step, c_list->size);
+		printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m requested %d connectors, but the target database only contains %d ... \n\n", opt->q_step, c_list->size);
 		return;
 	}
 
@@ -204,9 +218,16 @@ void run_connectors_de()
 
 	while (opt->include_connectors && c_excl_len < c_list->size && opt->q_c_curr < opt->q_step)
 	{
-		AnswerData *c_data = get_random_connector_de(c_list, c_excl, c_excl_len, opt->tgt_lvl);
-		c_excl[c_excl_len++] = c_data->idx;
-		score += c_data->pts;
+		AnswerData *a_data = get_random_connector_de(c_list, c_excl, c_excl_len, opt->tgt_lvl);
+
+		if (a_data->should_break)
+		{
+			printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m no (more) connectors that match the target level were found in the database ... \n\n");
+			break;
+		}
+
+		c_excl[c_excl_len++] = a_data->idx;
+		score += a_data->pts;
 
 		opt->q_c_curr++;
 	}
@@ -223,7 +244,7 @@ void run_expressions_de()
 
 	if (e_list->size < opt->q_step)
 	{
-		printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m requested %d expressions, but the target database only contains %d ... \n", opt->q_step, c_list->size);
+		printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m requested %d expressions, but the target database only contains %d ... \n\n", opt->q_step, c_list->size);
 		return;
 	}
 
@@ -233,9 +254,16 @@ void run_expressions_de()
 
 	while (opt->include_expressions && e_excl_len < e_list->size && opt->q_e_curr < opt->q_step)
 	{
-		AnswerData *e_data = get_random_expression_de(e_list, e_excl, e_excl_len, opt->tgt_lvl);
-		e_excl[e_excl_len++] = e_data->idx;
-		score += e_data->pts;
+		AnswerData *a_data = get_random_expression_de(e_list, e_excl, e_excl_len, opt->tgt_lvl);
+
+		if (a_data->should_break)
+		{
+			printf("\x1b[1m\x1b[44m| WARNING |\x1b[0m no (more) verbs that match the target level were found in the database ... \n\n");
+			break;
+		}
+
+		e_excl[e_excl_len++] = a_data->idx;
+		score += a_data->pts;
 
 		opt->q_e_curr++;
 	}

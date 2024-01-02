@@ -24,6 +24,7 @@ AnswerData *get_random_verb_de(VerbList *v_list, int *excl, int excl_len, int tg
 {
 	time_t t;
 	srand((unsigned)time(&t));
+	rand(); // intialize rand() with a random seed
 
 	int cnt = 0;
 

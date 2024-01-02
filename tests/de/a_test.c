@@ -20,6 +20,7 @@ AnswerData *get_random_ad_de(AdList *a_list, int *excl, int excl_len, int tgt_lv
 {
 	time_t t;
 	srand((unsigned)time(&t));
+	rand(); // intialize rand() with a random seed
 
 	int cnt = 0;
 

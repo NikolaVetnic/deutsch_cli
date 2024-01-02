@@ -20,6 +20,7 @@ AnswerData *get_random_expression_de(ExpressionList *c_list, int *excl, int excl
 {
 	time_t t;
 	srand((unsigned)time(&t));
+	rand(); // intialize rand() with a random seed
 
 	int cnt = 0;
 

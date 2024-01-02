@@ -20,6 +20,7 @@ AnswerData *get_random_connector_de(ConnectorList *c_list, int *excl, int excl_l
 {
 	time_t t;
 	srand((unsigned)time(&t));
+	rand(); // intialize rand() with a random seed
 
 	int cnt = 0;
 

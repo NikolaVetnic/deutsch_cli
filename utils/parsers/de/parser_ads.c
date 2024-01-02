@@ -157,7 +157,8 @@ char *get_default_output_filename()
     strftime(buffer, sizeof(buffer), "%Y%m%d-%H%M", tm_info);
 
     char *outputFilename = malloc(256 * sizeof(char)); 
-    snprintf(outputFilename, 256, "%s%s_%s", "/Users/nikolavetnic/Documents/Code/deutsch_cli/base/_complete/de/", buffer, "ads.csv");
+    // snprintf(outputFilename, 256, "%s%s_%s", "/Users/nikolavetnic/Documents/Code/deutsch_cli/base/_complete/de/parsed", buffer, "ads.csv");
+    snprintf(outputFilename, 256, "%s", "/Users/nikolavetnic/Documents/Code/deutsch_cli/base/_complete/de/parsed/ads.csv");
 
     return outputFilename;
 }
